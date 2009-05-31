@@ -1,0 +1,42 @@
+There are many Flickr API Javascript libraries. This is mine.
+
+# EXAMPLE
+
+ // basic setup and initialization
+
+ var args = {
+    'key' : 'YER_FLICKR_APIKEY',	// required
+    'secret' :'YER_FLICKR_APISECRET',
+    'enable_logging' : true
+ };
+
+ var flickr = new info.aaronland.flickr.API(args);
+
+ // set up a callback function for reverse geocoding
+
+ _reverseGeocodeComplete = function(rsp){
+
+    if (rsp.stat == 'fail'){
+       alert("reverse geocoding failed: " + rsp.message);
+       return;
+    }
+
+    if (rsp.places.total == 0){
+       alert("reverse geocding found no results");
+    }
+
+    var name = rsp.places.place[0].name;
+    var woeid = rsp.places.place[0].woeid;
+
+    alert(name + "(WOE ID:" + woeid + ")");
+ };
+
+ // reverse geocode a point in San Francisco
+
+ flickr.api_call('flickr.places.findByLatLon', {
+    'lat':37.79470999999999,
+    'lon': ,-122.40195,
+    'jsoncallback': '_reverseGeocodeComplete'
+ });
+
+ // profit!
