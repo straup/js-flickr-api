@@ -1,6 +1,6 @@
 /*
 
-info.aaronland.flickr.API library v1.0
+info.aaronland.flickr.API library v1.01
 Copyright (c) 2009 Aaron Straup Cope
 
 This is free software. You may redistribute it and/or modify it under
@@ -29,7 +29,7 @@ info.aaronland.flickr.API = function(args){
     this._host = 'api.flickr.com';
     this._endpoint = '/services/rest';
 
-    this.canhas_console = (typeof(console) != 'undefined') ? 1 : 0;
+    this.canhas_console = (typeof(console) == 'object') ? 1 : 0;
 }
 
 info.aaronland.flickr.API.prototype.api_call = function(method, args){
